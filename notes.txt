@@ -1,0 +1,59 @@
+URL: http://books.toscrape.com
+
+--- ESTRUCTURA GENERAL ---
+body
+  └── div.container-fluid.page
+      └── div.page_inner
+          └── div.row
+              └── div.col-sm-8.col-md-9  ← CONTENEDOR PRINCIPAL
+                  └── section
+                      └── ol.row  ← LISTA DE LIBROS
+
+--- ELEMENTOS IMPORTANTES ---
+
+1. CADA LIBRO (repetible):
+   Selector: article.product_pod
+   Ubicación: dentro de <li> dentro de <ol class="row">
+   
+2. TÍTULO:
+   Selector: h3 > a
+   Atributo útil: title="nombre completo del libro"
+   Texto visible: dentro del <a>
+   
+3. PRECIO:
+   Selector: p.price_color
+   Formato: "£51.77" (texto con símbolo de libra)
+   Ubicación: dentro de div.product_price
+   
+4. RATING (estrellas):
+   Selector: p.star-rating
+   Clases posibles: One, Two, Three, Four, Five
+   Ejemplo: <p class="star-rating Three">
+   Nota: El número está en el nombre de la clase
+   
+5. DISPONIBILIDAD:
+   Selector: p.instock.availability
+   Contiene: <i class="icon-ok"> + texto
+
+--- ESTRATEGIA DE SCRAPING ---
+
+Paso 1: Encontrar todos los <article class="product_pod">
+Paso 2: Para cada article, extraer:
+  - Título (desde h3 > a)
+  - Precio (desde p.price_color)
+  - Rating (desde p.star-rating, extraer la clase)
+
+--- POSIBLES PROBLEMAS ---
+
+- ¿Qué pasa si un libro no tiene rating?
+- ¿El precio siempre tiene el mismo formato?
+- ¿Todos los libros tienen título?
+
+--- PRÓXIMOS PASOS ---
+
+[ ] Hacer request a la URL
+[ ] Parsear HTML con BeautifulSoup
+[ ] Encontrar todos los articles
+[ ] Extraer datos de UN libro primero
+[ ] Iterar sobre todos los libros
+[ ] Guardar en estructura de datos (lista de diccionarios)
