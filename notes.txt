@@ -35,25 +35,3 @@ body
    Selector: p.instock.availability
    Contiene: <i class="icon-ok"> + texto
 
---- ESTRATEGIA DE SCRAPING ---
-
-Paso 1: Encontrar todos los <article class="product_pod">
-Paso 2: Para cada article, extraer:
-  - Título (desde h3 > a)
-  - Precio (desde p.price_color)
-  - Rating (desde p.star-rating, extraer la clase)
-
---- POSIBLES PROBLEMAS ---
-
-- ¿Qué pasa si un libro no tiene rating?
-- ¿El precio siempre tiene el mismo formato?
-- ¿Todos los libros tienen título?
-
---- PRÓXIMOS PASOS ---
-
-[ ] Hacer request a la URL
-[ ] Parsear HTML con BeautifulSoup
-[ ] Encontrar todos los articles
-[ ] Extraer datos de UN libro primero
-[ ] Iterar sobre todos los libros
-[ ] Guardar en estructura de datos (lista de diccionarios)
