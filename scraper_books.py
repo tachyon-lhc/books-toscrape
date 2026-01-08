@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
+import time
 
-BASE_URL = "https://books.toscrape.com/"
+BASE_URL = "https://books.toscrape.com"
 puntuaciones = {"One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5}
 
 
@@ -60,10 +62,9 @@ def extraer_puntuacion(element):
         return
 
 
-def extraer_data(html):
-    result = []
-
+def extraer_data(html, result):
     # Obteniendo bloque de libros
+    libros_pagina = []
     soup = BeautifulSoup(html, "html.parser")
     try:
         contenedor_libros = soup.find("div", class_="col-sm-8 col-md-9")
@@ -85,20 +86,35 @@ def extraer_data(html):
 
         # Solo agregar si todos los datos son válidos
         if titulo and precio is not None and puntuacion:
-            result.append(
+            libros_pagina.append(
                 {"titulo": titulo, "precio": precio, "puntuacion": puntuacion}
             )
         else:
             print("Libro incompleto detectado, se omite.")
 
-    return result
+    return libros_pagina
+
+
+def guardar_en_csv(df):
+    df_raw = pd.DataFrame(df)
+    df_raw.to_csv("data.csv", index=False)
+    print("DataFrame guardado correctamente en: data.csv")
 
 
 def main():
-    html = conectar_a_web(BASE_URL)
-    df_data = extraer_data(html)
-    print(df_data)
-    print(f"Total de libros procesados: {len(df_data)}")
+    result = []
+
+    for pagina in range(1, 51):  # De 1 a 50
+        print(f"Procesando pagina: {pagina}")
+        url = f"{BASE_URL}/catalogue/page-{pagina}.html"
+        html = conectar_a_web(url)
+        libros_pagina = extraer_data(html, result)
+        result.extend(libros_pagina)
+        time.sleep(1)
+
+    guardar_en_csv(result)
+    print(result)
+    print(f"Total de libros procesados: {len(result)}")
 
 
 if __name__ == "__main__":
