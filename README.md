@@ -6,10 +6,10 @@ Proyecto creado para practicar la técnica del web scraping, usando una pagina d
 
 ## Características
 
-- [Obtiene el titulo, precio, puntuacion; de los libros]
-- [Capacidad de iterar sobre multiples pagians del catalogo]
-- [Manejo solido de errores mediante excepciones]
-- [Almacenaje de data en un archivo csv]
+- Obtiene el titulo, precio, puntuación; de los libros
+- Capacidad de iterar sobre multiples paginas del catalogo
+- Manejo solido de errores mediante excepciones
+- Almacenaje de data en un archivo csv
 
 ## Tecnologías
 
@@ -27,8 +27,6 @@ Proyecto creado para practicar la técnica del web scraping, usando una pagina d
 ```
 
 ## Uso
-
-[CÓMO SE EJECUTA]
 
 ```bash
   python scraper_books.py
