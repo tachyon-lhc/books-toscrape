@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Proyecto creado para practicar la técnica del web scraping, usando una pagina destinada a ese fin (<https://books.toscrape.com>)
+Proyecto creado para practicar la técnica del web scraping, usando una pagina destinada a ese fin ([books.toscrape.com](https://books.toscrape.com))
 
 ## Características
 
@@ -42,6 +42,18 @@ El script genera un archivo `data.csv` con las siguientes columnas:
 - **titulo**: Nombre completo del libro
 - **precio**: Precio en libras esterlinas (£)
 - **puntuación**: Rating del 1 al 5
+
+### Ejemplo de salida en consola
+
+```
+Procesando pagina: 1
+Te has conectado de forma exitosa!!
+Procesando pagina: 2
+Te has conectado de forma exitosa!!
+...
+Total de libros procesados: 1000
+DataFrame guardado correctamente en: data.csv
+```
 
 ## Estructura del proyecto
 
