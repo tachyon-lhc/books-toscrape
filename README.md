@@ -22,8 +22,11 @@ Proyecto creado para practicar la técnica del web scraping, usando una pagina d
 
 ```bash
   git clone <https://github.com/tachyon-lhc/books-toscrape>
-  python -m venv
-  pip install requirements.txt
+  cd books-toscrape
+  python -m venv venv
+  source venv/bin/activate  # Linux/Mac
+  venv\Scripts\activate  # Windows
+  pip install -r requirements.txt
 ```
 
 ## Uso
@@ -36,9 +39,9 @@ Proyecto creado para practicar la técnica del web scraping, usando una pagina d
 
 El script genera un archivo `data.csv` con las siguientes columnas:
 
-- **titulo**: [descripción]
-- **precio**: [descripción]
-- **puntuacion**: [descripción]
+- **titulo**: Nombre completo del libro
+- **precio**: Precio en libras esterlinas (£)
+- **puntuación**: Rating del 1 al 5
 
 ## Estructura del proyecto
 
