@@ -21,7 +21,7 @@ Proyecto creado para practicar la técnica del web scraping, usando una pagina d
 ## Instalación
 
 ```bash
-  git clone <https://github.com/tachyon-lhc/books-toscrape>
+  git clone https://github.com/tachyon-lhc/books-toscrape
   cd books-toscrape
   python -m venv venv
   source venv/bin/activate  # Linux/Mac
